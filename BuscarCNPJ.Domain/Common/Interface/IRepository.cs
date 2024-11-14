@@ -10,5 +10,6 @@ namespace BuscarCNPJ.Domain.Common.Interface
         where TEntity : class
     {
         Task<TEntity> Get(string entity);
+        Task<TDestination> Get<TDestination>(string entity);
     }
 }

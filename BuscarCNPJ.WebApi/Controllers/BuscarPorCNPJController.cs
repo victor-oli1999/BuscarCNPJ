@@ -19,7 +19,16 @@ namespace BuscarCNPJ.WebApi.Controllers
         [HttpGet("{cnpj}")]
         public async Task<IActionResult> BuscarPorCNPJ(string cnpj)
         {
-            var item = await _repository.Get(cnpj);
+            var item = new CNPJ { };
+            try
+            {
+                item = await _repository.Get(cnpj);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
             return Ok(item);
         }
     }

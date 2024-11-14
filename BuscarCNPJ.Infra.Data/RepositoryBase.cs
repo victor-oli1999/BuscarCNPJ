@@ -27,5 +27,15 @@ namespace BuscarCNPJ.Infra.Data
 
             return entity;
         }
+        public async Task<TDestination> Get<TDestination>(string entry)
+        {
+            string baseURI = "https://open.cnpja.com/office/";
+
+            _httpClient.BaseAddress = new Uri(baseURI);
+
+            TDestination entity = await _httpClient.GetFromJsonAsync<TDestination>(entry);
+
+            return entity;
+        }
     }
 }
