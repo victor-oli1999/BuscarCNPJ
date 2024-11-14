@@ -19,21 +19,7 @@ namespace BuscarCNPJ.Infra.Data
         }
         public async Task<TEntity> Get(string entry)
         {
-            string baseURI = "https://open.cnpja.com/office/";
-
-            _httpClient.BaseAddress = new Uri(baseURI);
-
             TEntity entity = await _httpClient.GetFromJsonAsync<TEntity>(entry);
-
-            return entity;
-        }
-        public async Task<TDestination> Get<TDestination>(string entry)
-        {
-            string baseURI = "https://open.cnpja.com/office/";
-
-            _httpClient.BaseAddress = new Uri(baseURI);
-
-            TDestination entity = await _httpClient.GetFromJsonAsync<TDestination>(entry);
 
             return entity;
         }
